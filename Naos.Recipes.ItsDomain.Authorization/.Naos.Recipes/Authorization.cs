@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Naos.MessageBus.Persistence
+namespace Naos.Recipes.ItsDomain
 {
     using System.Security.Principal;
     using System.Threading;
@@ -15,8 +15,9 @@ namespace Naos.MessageBus.Persistence
     /// Helper for authorization needs of Its.Domain.
     /// </summary>
     public static class Authorization<T>
+        where T : class
     {
-        static Authorization<T>()
+        static Authorization()
         {
             AuthorizationFor<AlwaysIsInRolePrincipal>.ToApplyAnyCommand.ToA<T>.Requires((principal, acct) => true);
         }
