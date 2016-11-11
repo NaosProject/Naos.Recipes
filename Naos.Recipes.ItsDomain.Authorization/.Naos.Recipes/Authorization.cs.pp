@@ -8,7 +8,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 /* Must be in scoped namepace because it has to be public to not get a RunTimeBinderException when using it with [command].ApplyTo([aggregate]) */
-namespace $rootnamespace$.Naos.Recipes.ItsDomain
+namespace $rootnamespace$.NaosRecipes.ItsDomain
 {
     using System.Security.Principal;
     using System.Threading;
