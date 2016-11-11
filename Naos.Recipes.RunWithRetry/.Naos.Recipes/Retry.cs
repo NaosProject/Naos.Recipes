@@ -28,11 +28,16 @@ namespace Naos.Recipes.RunWithRetry
         /// </summary>
         /// <param name="func">Function to run.</param>
         /// <param name="retryCount">Retry count (Default: 3).</param>
-        /// <param name="attemptSecondsToWaitMultiplier">Number of seconds to multiply by attempt number and wait between retries (Default: 5).</param>
+        /// <param name="attemptWaitTimeMultiplier">Time to multiply by attempt number and wait between retries (Default: 5 seconds).</param>
         /// <returns>Task for async.</returns>
-        public static async Task RunAsync(Func<Task> func, int retryCount = 3, int attemptSecondsToWaitMultiplier = 5)
+        public static async Task RunAsync(Func<Task> func, int retryCount = 3, TimeSpan attemptWaitTimeMultiplier = default(TimeSpan))
         {
-            await Policy.Handle<Exception>().WaitAndRetryAsync(retryCount, attempt => TimeSpan.FromSeconds(attempt * attemptSecondsToWaitMultiplier)).ExecuteAsync(func);
+			if (attemptWaitTimeMultiplier = default(TimeSpan))
+			{
+				attemptWaitTimeMultiplier = TimeSpan.FromSeconds(5);
+			}
+			
+            await Policy.Handle<Exception>().WaitAndRetryAsync(retryCount, attempt => TimeSpan.FromSeconds(attempt * attemptWaitTimeMultiplier)).ExecuteAsync(func);
         }
 
         /// <summary>
@@ -40,12 +45,17 @@ namespace Naos.Recipes.RunWithRetry
         /// </summary>
         /// <param name="func">Function to run.</param>
         /// <param name="retryCount">Retry count (Default: 3).</param>
-        /// <param name="attemptSecondsToWaitMultiplier">Number of seconds to multiply by attempt number and wait between retries (Default: 5).</param>
+        /// <param name="attemptWaitTimeMultiplier">Time to multiply by attempt number and wait between retries (Default: 5 seconds).</param>
         /// <returns>Specified return type.</returns>
         /// <typeparam name="T">Type of return of the provided function.</typeparam>
-        public static async Task<T> RunAsync<T>(Func<Task<T>> func, int retryCount = 3, int attemptSecondsToWaitMultiplier = 5)
+        public static async Task<T> RunAsync<T>(Func<Task<T>> func, int retryCount = 3, int attemptWaitTimeMultiplier = default(TimeSpan))
         {
-            return await Policy.Handle<Exception>().WaitAndRetryAsync(retryCount, attempt => TimeSpan.FromSeconds(attempt * attemptSecondsToWaitMultiplier)).ExecuteAsync(func);
+			if (attemptWaitTimeMultiplier = default(TimeSpan))
+			{
+				attemptWaitTimeMultiplier = TimeSpan.FromSeconds(5);
+			}
+			
+            return await Policy.Handle<Exception>().WaitAndRetryAsync(retryCount, attempt => TimeSpan.FromSeconds(attempt * attemptWaitTimeMultiplier)).ExecuteAsync(func);
         }
     }
 }
