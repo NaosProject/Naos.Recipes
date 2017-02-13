@@ -35,7 +35,7 @@ namespace Naos.Recipes.InitializeTestProject
                     });
 
             // this has valuse I don't want to use.
-            AutoFixtureBackedDummyFactory.ConstrainDummyToExclude(ExampleEnum.Invalid);
+            AutoFixtureBackedDummyFactory.ConstrainDummyToExclude(ExampleEnumeration.Invalid);
         }
 
         /// <inheritdoc />
@@ -57,7 +57,7 @@ namespace Naos.Recipes.InitializeTestProject
     /// <summary>
     /// Example enumeration that has values I don't want used.
     /// </summary>
-    public enum ExampleEnum
+    public enum ExampleEnumeration
     {
         /// <summary>
         /// Invalid value.
