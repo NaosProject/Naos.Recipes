@@ -6,7 +6,6 @@
 //   Sourced from NuGet package. Will be overwritten with package update except in Naos.Recipes source.
 // </auto-generated>
 // --------------------------------------------------------------------------------------------------------------------
-// --------------------------------------------------------------------------------------------------------------------
 
 namespace Naos.Recipes.RunWithRetry
 {
