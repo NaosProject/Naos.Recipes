@@ -15,7 +15,7 @@ namespace Naos.Recipes.Configuration.Setup
     /// <summary>
     /// Static class to hold logic to setup configuration.
     /// </summary>
-    public static partial class Config
+    internal static partial class Config
     {
         /// <summary>
         /// Set the precedence in Its.Configuration to the supplied environment followed by "Common".
