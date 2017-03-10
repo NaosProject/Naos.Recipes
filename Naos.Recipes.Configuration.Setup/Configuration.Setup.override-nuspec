@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <metadata>
+		<description>Common configuration setup logic that is used in the Naos ecosystem.</description>
         <dependencies>
             <dependency id="Spritely.Recipes.JsonConfiguration" version="[0.15.1,)" />
             <dependency id="Its.Configuration" version="[1.0.6,)" />
