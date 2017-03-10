@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <dependencies>
+            <dependency id="Spritely.Recipes.JsonConfiguration" developmentDependency="true" version="[0.15.1,)" />
+            <dependency id="Its.Configuration" version="[1.0.6,)" />
+            <dependency id="Newtonsoft.Json" version="[9.0.1,)" />
+        </dependencies>
+    </metadata>
+</package>
