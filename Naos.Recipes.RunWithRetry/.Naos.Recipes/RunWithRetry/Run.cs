@@ -41,7 +41,7 @@ namespace Naos.Recipes.RunWithRetry
             await Using
                 .LinearBackOff(TimeSpan.FromSeconds(LinearBackoffDelayInSeconds))
                 .WithMaxRetries(RetryCount)
-                .Run(operation)
+                .RunAsync(operation)
                 .Now();
         }
 
@@ -60,7 +60,7 @@ namespace Naos.Recipes.RunWithRetry
             var result = await Using
                 .LinearBackOff(TimeSpan.FromSeconds(LinearBackoffDelayInSeconds))
                 .WithMaxRetries(RetryCount)
-                .Run(operation)
+                .RunAsync(operation)
                 .Now();
             return result;
         }
@@ -88,7 +88,7 @@ namespace Naos.Recipes.RunWithRetry
                 .LinearBackOff(TimeSpan.FromSeconds(LinearBackoffDelayInSeconds))
                 .WithReporter(_ => reporter(new { Message = messageBuilder == null ? _.Message : messageBuilder(_), Exception = _ }))
                 .WithMaxRetries(RetryCount)
-                .Run(operation)
+                .RunAsync(operation)
                 .Now();
         }
 
@@ -116,7 +116,7 @@ namespace Naos.Recipes.RunWithRetry
                 .LinearBackOff(TimeSpan.FromSeconds(LinearBackoffDelayInSeconds))
                 .WithReporter(_ => reporter(new { Message = messageBuilder == null ? _.Message : messageBuilder(_), Exception = _ }))
                 .WithMaxRetries(RetryCount)
-                .Run(operation)
+                .RunAsync(operation)
                 .Now();
             return result;
         }        
