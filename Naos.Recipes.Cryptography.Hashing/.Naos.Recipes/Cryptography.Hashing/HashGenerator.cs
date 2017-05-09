@@ -41,14 +41,17 @@ namespace Naos.Recipes.Cryptography.Hashing
         /// </summary>
         /// <param name="hashAlgorithmName">Name of the hash algorithm to use.</param>
         /// <param name="source">Source to use as the input.</param>
+        /// <param name="encoding">Optional encoding of the input (default is UTF8).</param>
         /// <returns>Hexadecimal-formatted string of the hash value.</returns>
-        public static string ComputeHashFromString(HashAlgorithmName hashAlgorithmName, string source)
+        public static string ComputeHashFromString(HashAlgorithmName hashAlgorithmName, string source, Encoding encoding = null)
         {
             source.Named(nameof(source)).Must().NotBeNull().And().NotBeEmptyString().OrThrowFirstFailure();
 
+            var localEncoding = encoding ?? Encoding.UTF8;
+
             using (var hashAlgorithm = GetHashAlgorithm(hashAlgorithmName))
             {
-                var bytes = Encoding.UTF8.GetBytes(source);
+                var bytes = localEncoding.GetBytes(source);
                 return CreateHashString(hashAlgorithm.ComputeHash(bytes));
             }
         }
@@ -80,7 +83,7 @@ namespace Naos.Recipes.Cryptography.Hashing
         /// <param name="hashAlgorithmName">Name of the hash algorithm to use.</param>
         /// <param name="sourceFilePath">Source file path to use as the input.</param>
         /// <returns>Hexadecimal-formatted string of the hash value.</returns>
-        public static string ComputeHashFilePath(HashAlgorithmName hashAlgorithmName, string sourceFilePath)
+        public static string ComputeHashFromFilePath(HashAlgorithmName hashAlgorithmName, string sourceFilePath)
         {
             sourceFilePath.Named(nameof(sourceFilePath)).Must().NotBeEmptyString().OrThrow();
 
