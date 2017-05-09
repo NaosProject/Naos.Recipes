@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+		<description>Static class wrapper around .NET Hash Algorithm usage.  Supports creating a hash using all the standard algorithms against a string, file path and stream.</description>
+        <dependencies>
+            <dependency id="Spritely.Recipes.MustValidation" version="[0.6.2,)" />
+        </dependencies>
+    </metadata>
+</package>
