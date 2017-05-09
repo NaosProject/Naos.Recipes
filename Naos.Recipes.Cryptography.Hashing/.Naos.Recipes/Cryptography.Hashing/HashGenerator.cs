@@ -7,7 +7,7 @@
 // </auto-generated>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace CoMetrics.Reporting.Domain
+namespace Naos.Recipes.Cryptography.Hashing
 {
     using System;
     using System.Collections.Generic;
