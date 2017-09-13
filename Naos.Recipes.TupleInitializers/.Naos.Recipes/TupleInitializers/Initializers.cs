@@ -12,14 +12,14 @@ namespace Naos.Recipes.TupleInitializers
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Tuple initializers.
+    /// </summary>
     #if !NaosRecipesTupleInitializers
         [System.Diagnostics.DebuggerStepThrough]
         [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
         [System.CodeDom.Compiler.GeneratedCode("Naos.Recipes.TupleInitializers", "See package version number")]
     #endif
-    /// <summary>
-    /// Tuple initializers.
-    /// </summary>
     internal static class Initializers
     {
         /// <summary>
