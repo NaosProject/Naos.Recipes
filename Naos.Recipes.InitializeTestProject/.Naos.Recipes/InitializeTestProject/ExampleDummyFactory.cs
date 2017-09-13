@@ -16,6 +16,11 @@ namespace Naos.Recipes.InitializeTestProject
 
     using OBeautifulCode.AutoFakeItEasy;
 
+    #if !NaosRecipesInitializeTestProject
+        [System.Diagnostics.DebuggerStepThrough]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+        [System.CodeDom.Compiler.GeneratedCode("Naos.Recipes.InitializeTestProject", "See package version number")]
+    #endif
     /// <summary>
     /// Example of how to control how dummy objects get created.
     /// </summary>
