@@ -35,7 +35,6 @@ namespace Naos.Recipes.Configuration.Setup
             Settings.Reset();
 
             SetupSerialization();
-            Settings.SettingsDirectory = Settings.SettingsDirectory.Replace("\\bin\\Debug", string.Empty);
             Settings.Precedence = new[] { environment, CommonPrecedence };
         }
 
