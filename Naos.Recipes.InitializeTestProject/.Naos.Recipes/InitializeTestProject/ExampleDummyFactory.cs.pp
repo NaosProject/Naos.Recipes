@@ -7,7 +7,7 @@
 // </auto-generated>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Naos.Recipes.InitializeTestProject
+namespace $rootnamespace$
 {
     using System;
     using System.Collections.Generic;
