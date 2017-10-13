@@ -11,7 +11,8 @@ namespace Naos.Recipes.Configuration.Setup
 {
     using Its.Configuration;
 
-    using Spritely.Recipes;
+    using Naos.Serialization.Domain;
+    using Naos.Serialization.Json;
 
     /// <summary>
     /// Static class to hold logic to setup configuration.
@@ -21,6 +22,8 @@ namespace Naos.Recipes.Configuration.Setup
     [System.CodeDom.Compiler.GeneratedCode("Naos.Recipes", "See package version number")]
     internal static class Config
     {
+        private static readonly IStringDeserialize deserializer = new NaosJsonSerializer(SerializationKind.Default);
+
         /// <summary>
         /// Common precedence used after the environment specific precedence.
         /// </summary>
@@ -43,7 +46,7 @@ namespace Naos.Recipes.Configuration.Setup
         /// </summary>
         public static void SetupSerialization()
         {
-            Settings.Deserialize = (type, serialized) => DefaultJsonSerializer.DeserializeObject(serialized, type);
+            Settings.Deserialize = (type, serialized) => deserializer.Deserialize(serialized, type);
         }
     }
 }

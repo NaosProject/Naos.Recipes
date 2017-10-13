@@ -3,9 +3,8 @@
     <metadata>
 		<description>Common configuration setup logic that is used in the Naos ecosystem.</description>
         <dependencies>
-            <dependency id="Spritely.Recipes.JsonConfiguration" version="[0.15.1,)" />
+            <dependency id="Naos.Serialization.Json" version="[1.0.32,)" />
             <dependency id="Its.Configuration" version="[1.0.6,)" />
-            <dependency id="Newtonsoft.Json" version="[9.0.1,)" />
         </dependencies>
     </metadata>
 </package>
