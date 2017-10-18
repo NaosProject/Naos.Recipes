@@ -9,15 +9,22 @@
 
 namespace Naos.Recipes.Configuration.Setup
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+
     using Its.Configuration;
 
     using Naos.Serialization.Domain;
     using Naos.Serialization.Json;
 
+    using Spritely.Recipes;
+
+    using static System.FormattableString;
+
     /// <summary>
     /// Static class to hold logic to setup configuration.
     /// </summary>
-    [System.Diagnostics.DebuggerStepThrough]
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     [System.CodeDom.Compiler.GeneratedCode("Naos.Recipes", "See package version number")]
     internal static class Config
@@ -30,23 +37,51 @@ namespace Naos.Recipes.Configuration.Setup
         public const string CommonPrecedence = "Common";
 
         /// <summary>
-        /// Set the precedence in Its.Configuration to the supplied environment followed by "Common".
+        /// Set up serialization logic for Newtonsoft and Its.Configuration to use when reading settings.
         /// </summary>
-        /// <param name="environment">Environment name that matches the configuration folder in ".config".</param>
-        public static void SetupForUnitTest(string environment)
+        public static void ConfigureSerialization()
         {
-            Settings.Reset();
-
-            SetupSerialization();
-            Settings.Precedence = new[] { environment, CommonPrecedence };
+            Settings.Deserialize = (type, serialized) => deserializer.Deserialize(serialized, type);
         }
 
         /// <summary>
-        /// Set up serialization logic for Newtonsoft and Its.Configuration to use when reading settings.
+        /// Sets the precedence programatically (along with option to include <see cref="CommonPrecedence" /> to the end) and ignores the setting in the Application Config.
         /// </summary>
-        public static void SetupSerialization()
+        /// <param name="precedenceValue">Value to set.</param>
+        /// <param name="includeCommonPrecedenceAtEnd">Optional value indicating whether or not to add the <see cref="CommonPrecedence" /> to the end of the chain; DEFAULT is true.</param>
+        /// <param name="settingsDirectory">Optional settings root directory; DEFAULT is null and will look for a ".config" folder at execution location.</param>
+        public static void ResetConfigureSerializationAndSetValues(string precedenceValue, bool includeCommonPrecedenceAtEnd = true, string settingsDirectory = null)
         {
-            Settings.Deserialize = (type, serialized) => deserializer.Deserialize(serialized, type);
+            ResetConfigureSerializationAndSetValues(new[] { precedenceValue }, includeCommonPrecedenceAtEnd, settingsDirectory);
+        }
+
+        /// <summary>
+        /// Sets the precedence programatically (in order provided along with option to include <see cref="CommonPrecedence" /> to the end) and ignores the setting in the Application Config.
+        /// </summary>
+        /// <param name="precedenceValues">Values to set.</param>
+        /// <param name="includeCommonPrecedenceAtEnd">Optional value indicating whether or not to add the <see cref="CommonPrecedence" /> to the end of the chain; DEFAULT is true.</param>
+        /// <param name="settingsDirectory">Optional settings root directory; DEFAULT is null and will look for a ".config" folder at execution location.</param>
+        public static void ResetConfigureSerializationAndSetValues(IReadOnlyList<string> precedenceValues, bool includeCommonPrecedenceAtEnd = true, string settingsDirectory = null)
+        {
+            new { precedenceValues }.Must().NotBeNull().And().NotBeEmptyEnumerable<string>().OrThrowFirstFailure();
+
+            Settings.Reset();
+
+            ConfigureSerialization();
+
+            if (!string.IsNullOrWhiteSpace(settingsDirectory))
+            {
+                Directory.Exists(settingsDirectory).Named(Invariant($"{nameof(settingsDirectory)}-{settingsDirectory}-MustExistToUse")).Must().BeTrue().OrThrowFirstFailure();
+                Settings.SettingsDirectory = settingsDirectory;
+            }
+
+            var localPrecedences = precedenceValues.ToList();
+            if (includeCommonPrecedenceAtEnd && !localPrecedences.Contains(CommonPrecedence))
+            {
+                localPrecedences.Add(CommonPrecedence);
+            }
+
+            Settings.Precedence = localPrecedences.ToArray();
         }
     }
 }
