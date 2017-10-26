@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Naos.Recipes.Console.ExampleConfig</id>
+    <version>$version$</version>
+    <authors>Naos Project</authors>
+    <description>Recipe that installs examples of config to be used.</description>
+    <developmentDependency>true</developmentDependency>
+    <copyright>Copyright (c) 2017 Naos LLC</copyright>
+    <projectUrl>http://naosproject.com</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/NaosProject/Naos.Build/master/NAOS-NuGet-Icon-v2.png</iconUrl>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+  </metadata>
+  <files>
+    <file src="ExampleConsoleApp.config" target="content\net45\ExampleConsoleApp.config" />
+    <file src=".config\ExampleDevelopment\LogProcessorSettings.json" target="content\net45\.config\ExampleDevelopment\LogProcessorSettings.json" />
+    <file src=".config\ExampleProduction\LogProcessorSettings.json" target="content\net45\.config\ExampleProduction\LogProcessorSettings.json" />
+    <file src="InstallNeededToMarkConfigCopyToOutput.ps1" target="tools\Install.ps1" />
+  </files>
+</package>

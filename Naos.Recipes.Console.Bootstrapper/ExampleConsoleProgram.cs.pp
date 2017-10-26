@@ -32,14 +32,14 @@ namespace $rootnamespace$
                  * This is just a pass through to the CLAP implementation of the harness,    *
                  * it will parse the command line arguments and provide multiple entry       *
                  * points as configured.  It is easiest to derive from the abstract class    *
-				 * 'CommandLinAbstractionBase' as 'ExampleCommandLineAbstraction' does which *
+                 * 'CommandLinAbstractionBase' as 'ExampleCommandLineAbstraction' does which *
                  * provides an example of the minimum amount of work to get started.  It is  *
                  * installed as a recipe for easy reference and covers help, errors, etc.    *
                  *---------------------------------------------------------------------------*
                  * For an example of config files you can install the package                *
-				 * 'Naos.Recipes.Console.ExampleConfig' which has examples of the directory  *
-				 * structure, 'LogProcessorSettings' settings for console and file, as well  *
-				 * as an App.Config it not using the environment name as a parameter.        *
+                 * 'Naos.Recipes.Console.ExampleConfig' which has examples of the directory  *
+                 * structure, 'LogProcessorSettings' settings for console and file, as well  *
+                 * as an App.Config it not using the environment name as a parameter.        *
                  *---------------------------------------------------------------------------*
                  * Must update the code below to use your custom abstraction class.          *
                  *---------------------------------------------------------------------------*/
