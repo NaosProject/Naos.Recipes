@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<package>
+  <metadata>
+    <id>Naos.Recipes.Console.ExampleConfig</id>
+    <description>Recipe that installs examples of config to be used.</description>
+  </metadata>
+</package>
