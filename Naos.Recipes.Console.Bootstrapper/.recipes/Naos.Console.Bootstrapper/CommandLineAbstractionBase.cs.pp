@@ -34,6 +34,8 @@ namespace $rootnamespace$
     /// Abstraction for use with <see cref="CLAP" /> to provide basic command line interaction.
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1053:StaticHolderTypesShouldNotHaveConstructors", Justification = "Cannot be static for command line contract.")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    [System.CodeDom.Compiler.GeneratedCode("Naos.Recipes.Console.Bootstrapper", "See package version number")]
     public abstract class CommandLineAbstractionBase
     {
         /// <summary>
@@ -100,7 +102,9 @@ namespace $rootnamespace$
         /// </summary>
         /// <param name="context">Context provided with details.</param>
         [Error]
+#pragma warning disable CS3001 // Argument type is not CLS-compliant - needed for CLAP
         public static void Error(ExceptionContext context)
+#pragma warning restore CS3001 // Argument type is not CLS-compliant
         {
             new { context }.Must().NotBeNull().OrThrowFirstFailure();
 
@@ -226,6 +230,7 @@ namespace $rootnamespace$
         /// <param name="anonymousObjectWithArguments">Object to reflect over properties of.</param>
         /// <param name="method">Optional name of method being called, if null then it will construct a <see cref="StackTrace" /> to retrieve it; this takes about 10-15 milliseconds so it's not free but is relatively cheap to have a smaller mouth to feed.</param>
         /// <param name="announcer">Optional announcer; DEFAULT is null which will go to <see cref="Console.WriteLine(string)" />.<see cref="Console.WriteLine(string)" />.</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "object", Justification = "Prefer this name for clarity.")]
         protected static void PrintArguments(object anonymousObjectWithArguments = null, string method = null, Action<string> announcer = null)
         {
             var localAnnouncer = announcer ?? Console.WriteLine;
@@ -256,11 +261,6 @@ namespace $rootnamespace$
 
             localAnnouncer(firstLine);
             lines.ForEach(_ => localAnnouncer(_));
-        }
-
-        private static void NullAnnouncer(string messageNeverUsed)
-        {
-            /* no-op - just to statisfy contract */
         }
     }
 
