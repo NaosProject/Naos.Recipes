@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<package>
+  <metadata>
+    <id>Naos.Recipes.Console.Domain</id>
+    <description>Recipe that installs the common classes used in the Naos.Recipes.Console.Bootstrapper but might also be used elsewhere.</description>
+  </metadata>
+</package>
