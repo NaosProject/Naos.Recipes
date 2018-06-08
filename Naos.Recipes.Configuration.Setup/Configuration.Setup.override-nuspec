@@ -6,7 +6,7 @@
             <dependency id="Its.Configuration" version="[1.0.6,)" />
             <dependency id="Naos.Serialization.Json" version="[1.0.32,)" />
             <dependency id="OBeautifulCode.Collection.Recipes.EnumerableExtensions" version="[1.0.21,)" />
-            <dependency id="OBeautifulCode.Validation.Recipes.ParameterValidator" version="[1.0.13)" />
+            <dependency id="OBeautifulCode.Validation.Recipes.ParameterValidator" version="[1.0.13,)" />
         </dependencies>
     </metadata>
 </package>
