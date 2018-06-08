@@ -16,7 +16,7 @@ namespace Naos.Recipes.Cryptography.Hashing
     using System.Security.Cryptography;
     using System.Text;
 
-    using Spritely.Recipes;
+    using OBeautifulCode.Validation.Recipes;
 
     /// <summary>
     /// Helper class for computing hash values.
@@ -45,7 +45,7 @@ namespace Naos.Recipes.Cryptography.Hashing
         /// <returns>Hexadecimal-formatted string of the hash value.</returns>
         public static string ComputeHashFromString(HashAlgorithmName hashAlgorithmName, string source, Encoding encoding = null)
         {
-            source.Named(nameof(source)).Must().NotBeNull().And().NotBeEmptyString().OrThrowFirstFailure();
+            source.Named(nameof(source)).Must().NotBeNullNorWhiteSpace();
 
             var localEncoding = encoding ?? Encoding.UTF8;
 
@@ -64,7 +64,7 @@ namespace Naos.Recipes.Cryptography.Hashing
         /// <returns>Hexadecimal-formatted string of the hash value.</returns>
         public static string ComputeHashFromStream(HashAlgorithmName hashAlgorithmName, Stream sourceStream)
         {
-            sourceStream.Named(nameof(sourceStream)).Must().NotBeNull().OrThrow();
+            sourceStream.Named(nameof(sourceStream)).Must().NotBeNull();
 
             using (var hashAlgorithm = GetHashAlgorithm(hashAlgorithmName))
             {
@@ -85,7 +85,7 @@ namespace Naos.Recipes.Cryptography.Hashing
         /// <returns>Hexadecimal-formatted string of the hash value.</returns>
         public static string ComputeHashFromFilePath(HashAlgorithmName hashAlgorithmName, string sourceFilePath)
         {
-            sourceFilePath.Named(nameof(sourceFilePath)).Must().NotBeEmptyString().OrThrow();
+            sourceFilePath.Named(nameof(sourceFilePath)).Must().NotBeNullNorWhiteSpace();
 
             using (var hashAlgorithm = GetHashAlgorithm(hashAlgorithmName))
             {
