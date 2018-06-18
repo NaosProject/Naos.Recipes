@@ -173,7 +173,7 @@ namespace $rootnamespace$
         /// <param name="debug">A value indicating whether or not to launch the debugger.</param>
         /// <param name="environment">Optional environment name that will set the <see cref="Its.Configuration" /> precedence instead of the default which is reading the App.Config value.</param>
         /// <param name="logWritingSettings">Optional <see cref="LogWritingSettings" /> to use instead of the default found in <see cref="Its.Configuration" />.</param>
-        /// <param name="configuredAndManagedLogProcessors">Optional set of pre-configured and externally managed <see cref="LogProcessorBase" /> to use.</param>
+        /// <param name="configuredAndManagedLogProcessors">Optional set of pre-configured and externally managed <see cref="LogWriterBase" /> to use.</param>
         /// <param name="announcer">Optional announcer; DEFAULT is null which will go to <see cref="Console.WriteLine(string)" />.<see cref="Console.WriteLine(string)" />.</param>
         protected static void CommonSetup(bool debug, string environment = null, LogWritingSettings logWritingSettings = null, IReadOnlyCollection<LogWriterBase> configuredAndManagedLogProcessors = null, Action<string> announcer = null)
         {
@@ -345,7 +345,7 @@ namespace $rootnamespace$
     /// <summary>
     /// Example of how to extend the base class to add your custom functionality.  It's recommeneded that each method take
     /// optional environment name AND debug boolean paramters and then call the <see cref="ConsoleAbstractionBase.CommonSetup" /> but not necessary.
-    /// The common setup also allows for provided the <see cref="LogProcessorSettings" /> directly instead of the default
+    /// The common setup also allows for provided the <see cref="LogWritingSettings" /> directly instead of the default
     /// loading from <see cref="Its.Configuration" />.
     /// </summary>
     public class ExampleConsoleAbstraction : ConsoleAbstractionBase

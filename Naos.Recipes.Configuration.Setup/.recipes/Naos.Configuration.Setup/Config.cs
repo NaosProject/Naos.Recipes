@@ -86,7 +86,7 @@ namespace Naos.Recipes.Configuration.Setup
         /// <param name="announcer">Optional announcer to communicate setup state; DEFAULT is null.</param>
         public static void ResetConfigureSerializationAndSetValues(IReadOnlyList<string> precedenceValues, bool includeCommonPrecedenceAtEnd = true, string settingsDirectory = null, Action<string> announcer = null)
         {
-            new { precedenceValues }.Must().NotBeNullNorEmptyNorContainAnyNulls();
+            new { precedenceValues }.Must().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
 
             void NullAnnouncer(string message)
             {
