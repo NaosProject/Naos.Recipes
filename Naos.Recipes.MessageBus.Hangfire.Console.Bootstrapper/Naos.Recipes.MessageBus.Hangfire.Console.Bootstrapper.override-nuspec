@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+
+<package>
+  <metadata>
+    <description>Recipe that installs the basic classes and references needed to get a .NET Console Application up and running.</description>
+    <dependencies>
+      <dependency id="Naos.Recipes.Console.Bootstrapper" version="[$version$,)" />
+      <dependency id="Naos.MessageBus.Hangfire.Bootstrapper" version="[1.2.0,)" />
+      <dependency id="Naos.MessageBus.Hangfire.ExampleConfig" version="[1.2.0,)" />
+    </dependencies>
+  </metadata>
+</package>
