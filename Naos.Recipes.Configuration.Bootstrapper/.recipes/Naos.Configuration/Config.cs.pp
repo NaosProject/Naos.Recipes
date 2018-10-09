@@ -7,7 +7,7 @@
 // </auto-generated>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Naos.Recipes.Configuration.Setup
+namespace $rootnamespace$
 {
     using System;
     using System.Collections.Generic;

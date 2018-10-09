@@ -7,7 +7,7 @@
 // </auto-generated>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Naos.Recipes.Configuration.Setup
+namespace $rootnamespace$
 {
     using System;
     using System.Linq;
@@ -17,7 +17,6 @@ namespace Naos.Recipes.Configuration.Setup
     /// <summary>
     /// Base class for test classes that require configuration.
     /// </summary>
-    [System.Diagnostics.DebuggerStepThrough]
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     [System.CodeDom.Compiler.GeneratedCode("Naos.Recipes", "See package version number")]
     public abstract class ConfigRequiredTest
