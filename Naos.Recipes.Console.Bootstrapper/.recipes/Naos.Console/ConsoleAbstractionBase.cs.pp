@@ -24,7 +24,6 @@ namespace $rootnamespace$
     using Naos.Diagnostics.Domain;
     using Naos.Diagnostics.Recipes;
     using Naos.Logging.Domain;
-    using Naos.Recipes.Configuration.Setup;
     using Naos.Telemetry.Domain;
 
     using OBeautifulCode.Collection.Recipes;
@@ -376,7 +375,17 @@ namespace $rootnamespace$
              * Normally this would just be done from the Its.Configuration file but the  *
              * we're overriding to only use the Console for demonstration purposes.      *
              *---------------------------------------------------------------------------*/
-            var logProcessorSettingsOverride = new LogWritingSettings(new[] { new ConsoleLogConfig(LogItemOrigins.All, LogItemOrigins.AllErrors),  });
+            var logProcessorSettingsOverride = new LogWritingSettings(new[]
+            {
+                new ConsoleLogConfig(
+                    new Dictionary<LogItemKind, IReadOnlyCollection<LogItemOrigin>>(), // all
+                    new Dictionary<LogItemKind, IReadOnlyCollection<LogItemOrigin>> {{LogItemKind.Exception, null}}, // all Exceptions
+                    new Dictionary<LogItemKind, IReadOnlyCollection<LogItemOrigin>> // Strings and Objects from ItsLogEntryPosted
+                    {
+                        {LogItemKind.String, new[] {LogItemOrigin.ItsLogEntryPosted}},
+                        {LogItemKind.Object, new[] {LogItemOrigin.ItsLogEntryPosted}},
+                    }),
+            });
 
             /*---------------------------------------------------------------------------*
              * Any method should run this logic to debug, setup config & logging, etc.   *
