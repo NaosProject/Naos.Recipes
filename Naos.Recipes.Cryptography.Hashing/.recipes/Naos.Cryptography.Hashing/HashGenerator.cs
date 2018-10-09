@@ -21,7 +21,6 @@ namespace Naos.Recipes.Cryptography.Hashing
     /// <summary>
     /// Helper class for computing hash values.
     /// </summary>
-    [System.Diagnostics.DebuggerStepThrough]
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     [System.CodeDom.Compiler.GeneratedCode("Naos.Recipes", "See package version number")]
     internal static partial class HashGenerator
