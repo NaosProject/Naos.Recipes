@@ -366,7 +366,7 @@ namespace $rootnamespace$
         /// <param name="debug">A value indicating whether or not to launch the debugger.</param>
         /// <param name="environment">Optional environment name that will set the <see cref="Its.Configuration" /> precedence instead of the default which is reading the App.Config value.</param>
         /// <param name="filePathToProcess">Example of a directory that needs to be checked for files to process.</param>
-        [Verb(Aliases = "Example", Description = "Example of a custom data processing job that might need to be run as a cron job.")]
+        [Verb(Aliases = nameof(WellKnownConsoleVerb.Example), Description = "Example of a custom data processing job that might need to be run as a cron job.")]
         public static void Example(
             [Aliases("")] [Description("Launches the debugger.")] [DefaultValue(false)] bool debug,
             [Aliases("")] [Description("Sets the Its.Configuration precedence to use specific settings.")] [DefaultValue(null)] string environment,
