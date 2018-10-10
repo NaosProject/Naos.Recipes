@@ -15,6 +15,7 @@ namespace $rootnamespace$
 
     using Naos.Cron;
     using Naos.MessageBus.Domain;
+    using Naos.MessageBus.Hangfire.Bootstrapper;
 
     /// <summary>
     /// Abstraction for use with <see cref="CLAP" /> to provide basic command line interaction.
