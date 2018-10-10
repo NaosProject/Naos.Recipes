@@ -43,7 +43,7 @@ namespace $rootnamespace$
                  *---------------------------------------------------------------------------*
                  * Must update the code below to use your custom abstraction class.          *
                  *---------------------------------------------------------------------------*/
-                var exitCode = Parser.Run<ExampleConsoleAbstraction>(args);
+                var exitCode = Parser.Run<ConsoleAbstraction>(args);
                 return exitCode;
             }
             catch (Exception ex)

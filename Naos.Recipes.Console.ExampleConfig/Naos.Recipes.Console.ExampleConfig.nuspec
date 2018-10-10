@@ -13,7 +13,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
   </metadata>
   <files>
-    <file src="ExampleConsoleApp.config" target="content\net45\ExampleConsoleApp.config" />
+    <file src="ExampleConsoleApp.config" target="content\net45\.recipes\Naos.Console\ExampleConsoleApp.config" />
     <file src=".config\ExampleDevelopment\LogProcessorSettings.json" target="content\net45\.config\ExampleDevelopment\LogProcessorSettings.json" />
     <file src=".config\ExampleProduction\LogProcessorSettings.json" target="content\net45\.config\ExampleProduction\LogProcessorSettings.json" />
     <file src="InstallNeededToMarkConfigCopyToOutput.ps1" target="tools\Install.ps1" />
