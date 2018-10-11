@@ -6,7 +6,6 @@
     <dependencies>
       <dependency id="Naos.Recipes.Console.Bootstrapper" version="[$version$,)" />
       <dependency id="Naos.MessageBus.Hangfire.Bootstrapper" version="[1.2.4,)" />
-      <dependency id="Naos.MessageBus.Hangfire.ExampleConfig" version="[1.2.4,)" />
     </dependencies>
   </metadata>
 </package>
