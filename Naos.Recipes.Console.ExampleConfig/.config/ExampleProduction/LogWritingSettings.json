@@ -1,0 +1,36 @@
+﻿{
+    "configurations": [
+        {
+            "timeSlicePerFile": "00:01:00",
+            "fileNamePrefix": "NaosConfigExample",
+            "logFileDirectoryPath": "D:\\Logs",
+            "createDirectoryStructureIfMissing": true,
+            "logInclusionKindToOriginsMap": {
+                "String": [ "ItsLogEntryPosted" ],
+                "Object": [ "ItsLogEntryPosted" ],
+                "Telemetry": [],
+                "Unknown": [],
+                "Exception": null
+            },
+            "logItemPropertiesToIncludeInLogMessage": "default"
+        },
+        {
+            "logInclusionKindToOriginsMap": {},
+            "logInclusionKindToOriginsMapForConsoleOut": {
+                "String": null,
+                "Object": null,
+                "Telemetry": [],
+                "Unknown": null,
+                "Exception": []
+            },
+            "logInclusionKindToOriginsMapForConsoleError": {
+                "String": [],
+                "Object": [],
+                "Telemetry": [],
+                "Unknown": [],
+                "Exception": null
+            },
+            "logItemPropertiesToIncludeInLogMessage": "default"
+        }
+    ]
+}
