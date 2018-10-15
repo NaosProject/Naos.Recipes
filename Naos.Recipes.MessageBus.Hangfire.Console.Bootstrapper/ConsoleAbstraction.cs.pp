@@ -26,7 +26,7 @@ namespace $rootnamespace$
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     [System.CodeDom.Compiler.GeneratedCode("Naos.Recipes.MessageBus.Hangfire.Bootstrapper", "See package version number")]
 #endif
-    public class ConsoleAbstraction : ConsoleAbstractionBase
+    public partial class ConsoleAbstraction : ConsoleAbstractionBase
     {
         /// <summary>
         /// Monitor for items in Hangfire.
