@@ -107,7 +107,6 @@ namespace Naos.Recipes.RunWithRetry
         {
             new { operation }.Must().NotBeNull();
             new { reporter }.Must().NotBeNull();
-            new { messageBuilder }.Must().NotBeNull();
 
             var localBackOff = backOffDelay == default(TimeSpan) ? DefaultLinearBackoffDelay : backOffDelay;
 
@@ -139,7 +138,6 @@ namespace Naos.Recipes.RunWithRetry
         {
             new { operation }.Must().NotBeNull();
             new { reporter }.Must().NotBeNull();
-            new { messageBuilder }.Must().NotBeNull();
 
             var localBackOff = backOffDelay == default(TimeSpan) ? DefaultLinearBackoffDelay : backOffDelay;
 
@@ -217,7 +215,6 @@ namespace Naos.Recipes.RunWithRetry
         {
             new { operation }.Must().NotBeNull();
             new { reporter }.Must().NotBeNull();
-            new { messageBuilder }.Must().NotBeNull();
 
             var localBackOff = backOffDelay == default(TimeSpan) ? DefaultLinearBackoffDelay : backOffDelay;
 
@@ -249,7 +246,6 @@ namespace Naos.Recipes.RunWithRetry
         {
             new { operation }.Must().NotBeNull();
             new { reporter }.Must().NotBeNull();
-            new { messageBuilder }.Must().NotBeNull();
 
             var localBackOff = backOffDelay == default(TimeSpan) ? DefaultLinearBackoffDelay : backOffDelay;
 
