@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<package>
+  <metadata>
+    <description>Recipe that installs the common logic and dependencies needed in the launching of a self host API.</description>
+    <dependencies>
+      <dependency id="jose-jwt" version="[2.4.0,)" />
+      <dependency id="Microsoft.AspNet.WebApi.Cors" version="[5.2.6,)" />
+      <dependency id="Microsoft.AspNet.WebApi.OwinSelfHost" version="[5.2.6,)" />
+      <dependency id="Microsoft.Owin.Cors" version="[4.0.0,)" />
+      <dependency id="Microsoft.Owin.Security.Jwt" version="[4.0.0,)" />
+      <dependency id="System.IdentityModel.Tokens.Jwt" version="[5.3.0,)" />
+    </dependencies>
+  </metadata>
+</package>
