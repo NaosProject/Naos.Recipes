@@ -3,7 +3,7 @@
     <metadata>
 		<description>Static class wrapper around .NET Hash Algorithm usage.  Supports creating a hash using all the standard algorithms against a string, file path and stream.</description>
         <dependencies>
-            <dependency id="OBeautifulCode.Validation.Recipes.ParameterValidator" version="[1.0.13,)" />
+            <dependency id="OBeautifulCode.Validation.Recipes.ParameterValidator" version="[1.0.21,)" />
         </dependencies>
     </metadata>
 </package>
