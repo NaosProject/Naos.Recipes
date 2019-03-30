@@ -34,7 +34,7 @@ namespace $rootnamespace$
         /// <summary>
         /// <see cref="SerializationDescription" /> used to get the <see cref="IStringDeserialize" /> used for reading config files.
         /// </summary>
-        public static readonly SerializationDescription ConfigFileSerializationDescription = new SerializationDescription(SerializationFormat.Json, SerializationRepresentation.String);
+        public static readonly SerializationDescription ConfigFileSerializationDescription = new SerializationDescription(SerializationKind.Json, SerializationFormat.String);
 
         private static readonly IStringDeserialize deserializer = JsonSerializerFactory.Instance.BuildSerializer(ConfigFileSerializationDescription);
 
