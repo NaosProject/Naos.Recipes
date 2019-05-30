@@ -36,7 +36,7 @@ namespace $rootnamespace$
         /// </summary>
         public static readonly SerializationDescription ConfigFileSerializationDescription = new SerializationDescription(SerializationKind.Json, SerializationFormat.String);
 
-        private static readonly IStringDeserialize deserializer = JsonSerializerFactory.Instance.BuildSerializer(ConfigFileSerializationDescription);
+        private static readonly IStringDeserialize deserializer = JsonSerializerFactory.Instance.BuildSerializer(ConfigFileSerializationDescription, unregisteredTypeEncounteredStrategy: UnregisteredTypeEncounteredStrategy.Attempt);
 
         /// <summary>
         /// Common precedence used after the environment specific precedence.
