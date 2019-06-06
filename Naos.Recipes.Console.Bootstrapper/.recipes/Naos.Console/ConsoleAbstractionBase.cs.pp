@@ -18,17 +18,16 @@ namespace $rootnamespace$
 
     using CLAP;
 
-    using Its.Configuration;
-    using Its.Log.Instrumentation;
-
+    using Naos.Configuration.Domain;
     using Naos.Diagnostics.Domain;
     using Naos.Diagnostics.Recipes;
     using Naos.Logging.Domain;
+    using Naos.Logging.Persistence;
     using Naos.Telemetry.Domain;
 
     using OBeautifulCode.Collection.Recipes;
     using OBeautifulCode.Validation.Recipes;
-    using OBeautifulCode.TypeRepresentation;
+    using OBeautifulCode.Type;
 
     using static System.FormattableString;
 
@@ -101,7 +100,7 @@ namespace $rootnamespace$
             /*---------------------------------------------------------------------------*
              * Write message after all logging is setup which will confirm setup.        *
              *---------------------------------------------------------------------------*/
-            Log.Write(() => message);
+            Its.Log.Instrumentation.Log.Write(() => message);
         }
 
         /// <summary>
@@ -138,7 +137,7 @@ namespace $rootnamespace$
                 Console.WriteLine("   " + context.Exception.Message);
                 Console.WriteLine(string.Empty);
                 Console.WriteLine("   " + context.Exception);
-                Log.Write(context.Exception);
+                Its.Log.Instrumentation.Log.Write(context.Exception);
             }
 
             // restore color
@@ -198,11 +197,7 @@ namespace $rootnamespace$
              *---------------------------------------------------------------------------*/
             if (!string.IsNullOrWhiteSpace(environment))
             {
-                Config.ResetConfigureSerializationAndSetValues(environment, announcer: localAnnouncer);
-            }
-            else
-            {
-                Config.ConfigureSerialization(localAnnouncer);
+                Config.SetPrecedence(environment, Config.CommonPrecedence);
             }
 
             /*---------------------------------------------------------------------------*
@@ -211,14 +206,14 @@ namespace $rootnamespace$
              * swapped out to send all Its.Log messages to another logging framework if  *
              * there is already one in place.                                            *
              *---------------------------------------------------------------------------*/
-            var localLogProcessorSettings = logWritingSettings ?? Settings.Get<LogWritingSettings>();
+            var localLogProcessorSettings = logWritingSettings ?? Config.Get<LogWritingSettings>(typeof(LoggingJsonConfiguration));
             if (localLogProcessorSettings == null)
             {
                 localAnnouncer("No LogProcessorSettings provided or found in config; using Null Object susbstitue.");
                 localLogProcessorSettings = new LogWritingSettings();
             }
 
-            LogWriting.Instance.Setup(localLogProcessorSettings, localAnnouncer, configuredAndManagedLogProcessors);
+            LogWriting.Instance.Setup(localLogProcessorSettings, localAnnouncer, configuredAndManagedLogProcessors, errorCodeKeys: new[] { "__OBC_ErrorCode__" });
 
         }
 
@@ -244,13 +239,13 @@ namespace $rootnamespace$
                         }
                         catch (Exception)
                         {
-                            return new AssemblyDetails(Path.ChangeExtension(Path.GetFileName(_), string.Empty), Version.Parse("1.0.0.0"), _, "UNKNOWN");
+                            return new AssemblyDetails(Path.ChangeExtension(Path.GetFileName(_), string.Empty), Version.Parse("1.0.0.0").ToString(), _, "UNKNOWN");
                         }
                     })
                 .ToList();
 
             var diagnosticsTelemetry = new DiagnosticsTelemetry(dateTimeOfSampleInUtc, machineDetails, processDetails, processSiblingAssemblies);
-            Log.Write(() => diagnosticsTelemetry);
+            Its.Log.Instrumentation.Log.Write(() => diagnosticsTelemetry);
         }
 
         /// <summary>
@@ -378,12 +373,12 @@ namespace $rootnamespace$
             var logProcessorSettingsOverride = new LogWritingSettings(new[]
             {
                 new ConsoleLogConfig(
-                    new Dictionary<LogItemKind, IReadOnlyCollection<LogItemOrigin>>(), // all
-                    new Dictionary<LogItemKind, IReadOnlyCollection<LogItemOrigin>> {{LogItemKind.Exception, null}}, // all Exceptions
-                    new Dictionary<LogItemKind, IReadOnlyCollection<LogItemOrigin>> // Strings and Objects from ItsLogEntryPosted
+                    new Dictionary<LogItemKind, IReadOnlyCollection<string>>(), // all
+                    new Dictionary<LogItemKind, IReadOnlyCollection<string>> {{LogItemKind.Exception, null}}, // all Exceptions
+                    new Dictionary<LogItemKind, IReadOnlyCollection<string>> // Strings and Objects from ItsLogEntryPosted
                     {
-                        {LogItemKind.String, new[] {LogItemOrigin.ItsLogEntryPosted}},
-                        {LogItemKind.Object, new[] {LogItemOrigin.ItsLogEntryPosted}},
+                        {LogItemKind.String, new[] {LogItemOrigin.ItsLogEntryPosted.ToString()}},
+                        {LogItemKind.Object, new[] {LogItemOrigin.ItsLogEntryPosted.ToString()}},
                     }),
             });
 
@@ -402,7 +397,7 @@ namespace $rootnamespace$
              *---------------------------------------------------------------------------*/
             PrintArguments(new { filePathToProcess, environment });
 
-            Log.Write(() => Invariant($"Processed files at: {filePathToProcess}"));
+            Its.Log.Instrumentation.Log.Write(() => Invariant($"Processed files at: {filePathToProcess}"));
         }
     }
 }
