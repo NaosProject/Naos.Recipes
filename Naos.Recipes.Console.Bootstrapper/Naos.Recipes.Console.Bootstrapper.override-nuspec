@@ -12,9 +12,9 @@
       <dependency id="Naos.Recipes.Console.Domain" version="[1.0.116,)" />
       <dependency id="Naos.Serialization.Factory" version="[1.0.127,)" />
       <dependency id="Naos.Telemetry.Domain" version="[1.0.16,)" />
-      <dependency id="OBeautifulCode.Collection.Recipes.EnumerableExtensions" version="[1.0.30,)" />
-      <dependency id="OBeautifulCode.Validation.Recipes.ParameterValidator" version="[1.0.25,)" />
-      <dependency id="OBeautifulCode.Reflection.Recipes.ReflectionHelper" version="[1.0.62,)" />
+      <dependency id="OBeautifulCode.Assertion.Recipes.Must" version="[1.0.10,)" />
+      <dependency id="OBeautifulCode.Collection.Recipes.EnumerableExtensions" version="[1.0.40,)" />
+      <dependency id="OBeautifulCode.Reflection.Recipes.ReflectionHelper" version="[1.0.75,)" />
     </dependencies>
   </metadata>
 </package>
