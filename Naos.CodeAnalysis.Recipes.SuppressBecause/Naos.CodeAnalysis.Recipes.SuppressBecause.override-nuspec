@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+
+<package>
+  <metadata>
+    <description>Recipe that installs the type 'SuppressBecause' which contains various default descriptions for use with common CodeAnalysis suppressions.</description>
+  </metadata>
+</package>
