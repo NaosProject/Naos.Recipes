@@ -210,9 +210,9 @@ namespace Naos.CodeAnalysis.Recipes
         public const string CA1815_OverrideEqualsAndOperatorEqualsOnValueTypes_TypeUsedForTestsThatRequireTypeToNotBeEquatable = "The type is being used in testing and we explicitly do not want the type to be equatable because it has bearing on the tests.";
 
         /// <summary>
-        /// A data payload is commonly represented as a byte array.
+        /// Data payloads are commonly represented as a byte arrays.
         /// </summary>
-        public const string CA1819_PropertiesShouldNotReturnArrays_DataPayloadIsCommonlyRepresentedAsByteArray = "A data payload is commonly represented as a byte array.";
+        public const string CA1819_PropertiesShouldNotReturnArrays_DataPayloadsAreCommonlyRepresentedAsByteArrays = "Data payloads are commonly represented as a byte arrays.";
 
         /// <summary>
         /// An array property is required for unit tests.
